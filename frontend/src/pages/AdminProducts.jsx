@@ -22,7 +22,7 @@ export default function AdminProducts() {
     const load = async () => {
       try {
         setLoading(true);
-        const res = await axios.get("${import.meta.env.VITE_API_URL}/api/products");
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/products`);
         if (!mounted) return;
         setProducts(Array.isArray(res.data) ? res.data : res.data.products || []);
       } catch (err) {

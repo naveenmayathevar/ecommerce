@@ -13,7 +13,7 @@ export function CartProvider({ children }) {
     if (!token) return;
 
     try {
-      const res = await axios.get("${import.meta.env.VITE_API_URL}/api/cart", {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/cart`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -32,7 +32,7 @@ export function CartProvider({ children }) {
   const addToCart = async (productId, qty = 1) => {
     try {
       await axios.post(
-        "${import.meta.env.VITE_API_URL}/api/cart",
+        `${import.meta.env.VITE_API_URL}/api/cart`,
         { productId, qty },
         {
           headers: { Authorization: `Bearer ${token}` },
