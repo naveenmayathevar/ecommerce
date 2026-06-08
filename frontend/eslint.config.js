@@ -25,9 +25,10 @@ export default defineConfig([
       'react-hooks': reactHooks,
     },
     rules: {
-      'no-unused-vars': ['warn', { varsIgnorePattern: '^[A-Z_]' }],
-      'react-hooks/rules-of-hooks': 'warn',
-      'react-hooks/exhaustive-deps': 'warn',
-    },
+  'no-unused-vars': ['warn', { varsIgnorePattern: '^[A-Z_]' }],
+  'react-hooks/rules-of-hooks': 'warn',
+  'react-hooks/exhaustive-deps': 'warn',
+  'react-refresh/only-export-components': 'warn',
+},
   },
 ])
