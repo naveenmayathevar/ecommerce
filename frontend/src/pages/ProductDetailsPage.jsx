@@ -15,7 +15,7 @@ function ProductDetailsPage() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/products/${id}`)
+      .get(`${import.meta.env.VITE_API_URL}/api/products/${id}`)
       .then((res) => setProduct(res.data))
       .catch((err) => console.log(err));
   }, [id]);

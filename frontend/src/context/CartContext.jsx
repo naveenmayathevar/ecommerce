@@ -13,7 +13,7 @@ export function CartProvider({ children }) {
     if (!token) return;
 
     try {
-      const res = await axios.get("http://localhost:5000/api/cart", {
+      const res = await axios.get("${import.meta.env.VITE_API_URL}/api/cart", {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -32,7 +32,7 @@ export function CartProvider({ children }) {
   const addToCart = async (productId, qty = 1) => {
     try {
       await axios.post(
-        "http://localhost:5000/api/cart",
+        "${import.meta.env.VITE_API_URL}/api/cart",
         { productId, qty },
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -47,7 +47,7 @@ export function CartProvider({ children }) {
 const updateQuantity = async (productId, qty) => {
   try {
     await axios.put(
-      `http://localhost:5000/api/cart/${productId}`,
+      `${import.meta.env.VITE_API_URL}/api/cart/${productId}`,
       { qty },
       { headers: { Authorization: `Bearer ${token}` } }
     );
@@ -62,7 +62,7 @@ const updateQuantity = async (productId, qty) => {
   const removeFromCart = async (productId) => {
     try {
       await axios.delete(
-        `http://localhost:5000/api/cart/${productId}`,
+        `${import.meta.env.VITE_API_URL}/api/cart/${productId}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -79,7 +79,7 @@ const updateQuantity = async (productId, qty) => {
     try {
       for (let item of cart) {
         await axios.delete(
-          `http://localhost:5000/api/cart/${item.productId._id}`,
+          `${import.meta.env.VITE_API_URL}/api/cart/${item.productId._id}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }

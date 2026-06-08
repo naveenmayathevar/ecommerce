@@ -10,7 +10,7 @@ import { AuthContext } from "../context/AuthContext";
  */
 export default function ImageUploader({
   onUpload,
-  uploadUrl = "http://localhost:5000/api/upload",
+  uploadUrl = "${import.meta.env.VITE_API_URL}/api/upload",
   fieldName = "image",
 }) {
   const { token } = useContext(AuthContext);

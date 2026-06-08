@@ -66,7 +66,7 @@ export default function AdminAddProduct() {
         countInStock: Number(form.countInStock),
       };
 
-      const res = await axios.post("http://localhost:5000/api/products", payload, {
+      const res = await axios.post("${import.meta.env.VITE_API_URL}/api/products", payload, {
         headers: {
           Authorization: token ? `Bearer ${token}` : undefined,
           "Content-Type": "application/json",
