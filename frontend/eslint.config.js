@@ -10,7 +10,6 @@ export default defineConfig([
     files: ['**/*.{js,jsx}'],
     extends: [
       js.configs.recommended,
-      reactHooks.configs.flat.recommended,
       reactRefresh.configs.vite,
     ],
     languageOptions: {
@@ -22,13 +21,13 @@ export default defineConfig([
         sourceType: 'module',
       },
     },
+    plugins: {
+      'react-hooks': reactHooks,
+    },
     rules: {
-  'no-unused-vars': ['warn', { varsIgnorePattern: '^[A-Z_]' }],
-  'react-hooks/exhaustive-deps': 'warn',
-  'react-hooks/rules-of-hooks': 'warn',
-  'react-hooks/set-state-in-effect': 'warn',
-},
+      'no-unused-vars': ['warn', { varsIgnorePattern: '^[A-Z_]' }],
+      'react-hooks/rules-of-hooks': 'warn',
+      'react-hooks/exhaustive-deps': 'warn',
+    },
   },
 ])
-
-
