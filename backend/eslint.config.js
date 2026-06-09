@@ -5,7 +5,7 @@ export default [
   {
     rules: {
       "no-unused-vars": "warn",
-      "no-console": "off",       // We use console.log in server code
+      "no-console": "off",
       "no-undef": "error"
     },
     languageOptions: {
@@ -24,6 +24,21 @@ export default [
         setInterval: "readonly",
         clearInterval: "readonly",
         console: "readonly"
+      }
+    }
+  },
+  {
+    files: ["src/__tests__/**/*.js"],
+    languageOptions: {
+      globals: {
+        describe: "readonly",
+        test: "readonly",
+        expect: "readonly",
+        jest: "readonly",
+        beforeEach: "readonly",
+        afterEach: "readonly",
+        beforeAll: "readonly",
+        afterAll: "readonly"
       }
     }
   }

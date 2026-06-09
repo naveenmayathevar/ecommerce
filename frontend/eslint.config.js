@@ -25,10 +25,25 @@ export default defineConfig([
       'react-hooks': reactHooks,
     },
     rules: {
-  'no-unused-vars': ['warn', { varsIgnorePattern: '^[A-Z_]' }],
-  'react-hooks/rules-of-hooks': 'warn',
-  'react-hooks/exhaustive-deps': 'warn',
-  'react-refresh/only-export-components': 'warn',
-},
+      'no-unused-vars': ['warn', { varsIgnorePattern: '^[A-Z_]' }],
+      'react-hooks/rules-of-hooks': 'warn',
+      'react-hooks/exhaustive-deps': 'warn',
+      'react-refresh/only-export-components': 'warn',
+    },
   },
+  {
+    files: ['src/test/**/*.{js,jsx}'],
+    languageOptions: {
+      globals: {
+        describe: 'readonly',
+        test: 'readonly',
+        expect: 'readonly',
+        vi: 'readonly',
+        beforeEach: 'readonly',
+        afterEach: 'readonly',
+        beforeAll: 'readonly',
+        afterAll: 'readonly',
+      }
+    }
+  }
 ])
