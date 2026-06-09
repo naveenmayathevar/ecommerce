@@ -31,13 +31,14 @@ jobs:
         working-directory: frontend
         run: npm ci
 
-      # For Vite frontends, "build" IS the test — if it compiles, it works
+      - name: Test
+        working-directory: frontend
+        run: npm test
+
       - name: Build
         working-directory: frontend
         run: npm run build
         env:
-          # VITE_ prefix = exposed to browser. These come from GitHub Secrets.
-          # Never put real API keys here — these get baked into the JS bundle!
           VITE_API_URL: ${{ secrets.VITE_API_URL }}
           VITE_STRIPE_PUBLIC_KEY: ${{ secrets.VITE_STRIPE_PUBLIC_KEY }}
 
@@ -63,22 +64,14 @@ jobs:
       - name: Install Vercel CLI
         run: npm install -g vercel
 
-      # Pull Vercel project settings (linked to your project)
       - name: Pull Vercel environment info
         working-directory: frontend
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
-        
-      - name: Test
-        working-directory: frontend
-        run: npm test
 
-      # Build using Vercel's build system (handles env vars from Vercel dashboard)
       - name: Build with Vercel
         working-directory: frontend
         run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
 
-      # Ship it!
       - name: Deploy to Vercel
         working-directory: frontend
         run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
-  
